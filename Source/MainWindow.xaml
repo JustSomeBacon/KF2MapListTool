@@ -1,0 +1,21 @@
+﻿<Window x:Class="KF2MapListTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KF2MapListTool"
+        mc:Ignorable="d"
+        Title="KF2MLT" Height="285" Width="250" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0" Height="254">
+        <ListBox x:Name="MapsListBox" Height="223" Width="244" Margin="0,0,0,31">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Width="224" ToolTip="Save the selected map's config info." Click="SaveButton_Click"/>
+    </Grid>
+</Window>
