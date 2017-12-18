@@ -65,8 +65,12 @@ namespace KF2MapListTool
 			{
 				foreach (string file in Directory.GetFiles(cacheLocation, "*.kfm", SearchOption.AllDirectories))
 				{
-					Map map = new Map(file.Replace(cacheLocation, ""));
-					mapList.Add(map);
+                    string MapPath = file.Replace(cacheLocation, "");
+
+                    if (!IsDuplicate(MapPath)){
+                        Map map = new Map(MapPath);
+                        mapList.Add(map);
+                    }
 				}
 			}
 			catch(Exception e)
@@ -160,5 +164,20 @@ namespace KF2MapListTool
 				Close();
 			}
 		}
+
+        private bool IsDuplicate(string path)
+        {
+            string WorkshopID = path.Split('\\')[0];
+
+            for(int i = 0; i<mapList.Count; i++)
+            {
+                if (mapList[i].WorkshopID == WorkshopID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 	}
 }
